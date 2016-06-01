@@ -17,7 +17,7 @@
                 "name": "lusca",
                 "arguments": [
                     {
-                        "csrf": {"key": "x-xsrf-token", "header": "_csrf"},
+                        "csrf": {"angular":true},
                         "xframe": "SAMEORIGIN",
                         "p3p": false,
                         "csp": false

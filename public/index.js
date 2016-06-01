@@ -8,8 +8,8 @@ angular.module('currencyConverterApp', ['ui.router', 'ngCookies'])
         template: "<login></login>"
     });
     $httpProvider.interceptors.push("csrfInterceptor");
-    $httpProvider.defaults.xsrfHeaderName = '_csrf';
-    $httpProvider.defaults.xsrfCookieName = 'x-xsrf-token';
+    $httpProvider.defaults.xsrfHeaderName = 'xsrf-token';
+    $httpProvider.defaults.xsrfCookieName = 'XSRF-TOKEN';
 }])
 .controller('mainCtrl', ['$scope', function($scope) {
   console.log('hi from main ctrl');
@@ -23,7 +23,7 @@ angular.module('currencyConverterApp', ['ui.router', 'ngCookies'])
 
       if(config.data) {
           config.data._csrf = csrf;
-          config.headers._csrf = csrf;
+          //config.headers._csrf = 'Moises!!!';
       }
 
       console.log('config', config);
