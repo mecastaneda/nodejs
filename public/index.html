@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="currencyConverterApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Currency Converter App</title>
+    <!-- Components -->
+    <link rel="stylesheet" href="/components/bootstrap/dist/css/bootstrap.min.css" charset="utf-8">
+    <link rel="stylesheet" href="/components/bootstrap/dist/css/bootstrap-theme.min.css" charset="utf-8">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/modules/login/login.css" media="screen" title="no title" charset="utf-8">
+    <!-- Components -->
+    <script src="/components/jquery/dist/jquery.js" charset="utf-8"></script>
+    <script src="/components/angular/angular.js" charset="utf-8"></script>
+    <script src="/components/bootstrap/js/collapse.js" charset="utf-8"></script>
+    <script src="/components/bootstrap/js/dropdown.js" charset="utf-8"></script>
+    <script src="/components/angular-ui-router/release/angular-ui-router.min.js" charset="utf-8"></script>
+    <script src="/components/angular-cookies/angular-cookies.min.js" charset="utf-8"></script>
+    <!-- Custom Scripts -->
+    <script src="/index.js" charset="utf-8"></script>
+    <script src="/modules/navbar/navbar.directive.js" charset="utf-8"></script>
+    <script src="/modules/login/login.directive.js" charset="utf-8"></script>
+    <script src="/modules/login/login.ctrl.js" charset="utf-8"></script>
+  </head>
+  <body ng-controller="mainCtrl">
+    <navbar></navbar>
+    <div ui-view></div>
+  </body>
+</html>
