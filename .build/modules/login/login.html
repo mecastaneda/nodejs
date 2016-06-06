@@ -1,10 +1,12 @@
 <div class="jumbotron">
+  Default UserName: test@currency.com </br>
+          Password: qwerty1
   <div class="container">
     <form class="form-horizontal" name="loginform" novalidate>
-      <div class="form-group" ng-class="{'has-error': loginform.email.$touched && loginform.email.$invalid}" >
-        <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+      <div class="form-group" ng-class="{'has-error': loginform.username.$touched && loginform.usernameusername.$invalid}" >
+        <label for="username" class="col-sm-2 control-label">Email</label>
         <div class="col-sm-10">
-          <input ng-model="user.email" type="email" name="email" class="form-control" placeholder="Email" required>
+          <input ng-model="user.username" type="email" name="username" class="form-control" placeholder="Email" required>
         </div>
       </div>
       <div class="form-group" ng-class="{'has-error': loginform.password.$touched && loginform.password.$invalid}">
@@ -14,10 +16,9 @@
         </div>
       </div>
       <div class="form-group" ng-class="{'has-error': errorMsg}">
-        <label for="submit" class="col-sm-2 control-label">{{errorMsg}}</label>
         <div class="col-sm-offset-2 col-sm-10">
           <button type="submit" ng-disabled="loginform.$invalid" ng-click="signin()" class="btn btn-default">Sign in</button>
-
+          <span class="help-block" ng-bind="errorMsg"></span>
         </div>
       </div>
     </form>

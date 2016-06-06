@@ -5,4 +5,4 @@ angular.module('currencyConverterApp')
     restrict: 'E',
     controller: 'loginCtrl'
   }
-})
+});

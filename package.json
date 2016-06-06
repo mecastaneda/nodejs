@@ -7,19 +7,26 @@
   "scripts": {
     "test": "grunt test",
     "build": "grunt build",
-    "all": "npm run build && npm run test"
+    "all": "npm run build && npm run test",
+    "start": "node index"
   },
   "dependencies": {
     "bcrypt": "^0.8.6",
+    "body-parser": "^1.15.1",
+    "connect-flash": "^0.1.1",
     "construx": "^1.0.0",
     "construx-copier": "^1.0.0",
     "construx-sass": "^1.0.0",
+    "cookie-parser": "^1.4.3",
     "crypto": "0.0.3",
     "eslint": "^1.10.3",
     "express": "^4.12.2",
+    "express-session": "^1.13.0",
     "kraken-js": "^1.0.3",
     "mongoose": "^4.4.19",
-    "passport": "^0.3.2"
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "request": "^2.72.0"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
@@ -31,6 +38,7 @@
     "grunt-mocha-cli": "^1.14.0",
     "grunt-sass": "^1.2.0",
     "mocha": "^1.18.0",
+    "morgan": "^1.7.0",
     "supertest": "^0.9.0"
   }
 }

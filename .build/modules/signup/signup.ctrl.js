@@ -1,13 +1,13 @@
 'use strict';
 
 angular.module('currencyConverterApp')
-.controller('loginCtrl', ['$scope', '$http', function($scope, $http) {
+.controller('signupCtrl', ['$scope', '$http', function($scope, $http) {
 
   $scope.user;
   $scope.errorMsg = '';
 
-  $scope.signin = function() {
-    $http.post('/login', $scope.user).then( function(res) {
+  $scope.signup = function() {
+    $http.post('/register', $scope.user).then( function(res) {
       console.log('all ok', res);
     }, function(res) {
       $scope.errorMsg = res.data.error.message;

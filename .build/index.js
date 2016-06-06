@@ -1,38 +1,29 @@
-angular.module('currencyConverterApp', ['ui.router', 'ngCookies'])
-.config(['$stateProvider', '$urlRouterProvider', '$httpProvider',
-  function($stateProvider, $urlRouterProvider, $httpProvider) {
+angular.module('currencyConverterApp', ['ui.router', 'ngCookies', 'reCAPTCHA'])
+.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', 'reCAPTCHAProvider',
+  function($stateProvider, $urlRouterProvider, $httpProvider, reCAPTCHAProvider) {
+
+    // Routing Configuration
     $urlRouterProvider.otherwise("/login");
     $stateProvider
       .state('login', {
         url: "/login",
         template: "<login></login>"
+    })
+      .state('signup', {
+        url: "/signup",
+        template: "<signup></signup>"
     });
-    $httpProvider.interceptors.push("csrfInterceptor");
-    $httpProvider.defaults.xsrfHeaderName = 'xsrf-token';
+
+    // CSRF Configuration
+    $httpProvider.defaults.xsrfHeaderName = 'X-XSRF-TOKEN';
     $httpProvider.defaults.xsrfCookieName = 'XSRF-TOKEN';
+
+    // reCaptcha Configuration
+    reCAPTCHAProvider.setPublicKey('6LdzvyETAAAAAAulB2x8v6GJfhMSbW43XtlHcV1u');
+    reCAPTCHAProvider.setOptions({
+        theme: 'light'
+    });
 }])
 .controller('mainCtrl', ['$scope', function($scope) {
-  console.log('hi from main ctrl');
-  $scope.greeting = "hello mundo";
-}])
-.factory('csrfInterceptor', ['$cookies', '$rootScope', '$q', function($cookies, $rootScope, $q) {
-  return {
-    request: function(config) {
-      var csrf = $cookies.get('XSRF-TOKEN');
-      console.log('csrf from cookie', csrf);
 
-      if(config.data) {
-          config.data._csrf = csrf;
-          //config.headers._csrf = 'Moises!!!';
-      }
-
-      console.log('config', config);
-
-      return config;
-    },
-    requestError: function(response) {
-      console.log('got req error');
-      return $q.reject(response);
-    }
-  }
 }]);

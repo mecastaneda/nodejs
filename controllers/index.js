@@ -5,15 +5,10 @@ var IndexModel = require('../models/index');
 
 module.exports = function (router) {
 
-    var model = new IndexModel();
+  router.get('/', function (req, res) {
+    // The only reason this file is being served separately 
+    // is so that the server will send the token.
+    res.sendFile('/index.html', {'root': './main_view'});
+  });
 
-    router.get('/', function (req, res) {
-
-        //res.send('<code><pre>' + JSON.stringify(model, null, 2) + '</pre></code>');
-
-    });
-
-    /*router.post('/login', function(req, res) {
-      console.log('login hit2');
-    });*/
 };

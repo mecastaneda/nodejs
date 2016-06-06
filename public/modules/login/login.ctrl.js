@@ -10,7 +10,7 @@ angular.module('currencyConverterApp')
     $http.post('/login', $scope.user).then( function(res) {
       console.log('all ok', res);
     }, function(res) {
-      console.log('not ok', res);
+      $scope.errorMsg = res.data.error.message;
     });
   }
 }]);
