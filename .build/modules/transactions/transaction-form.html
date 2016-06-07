@@ -1,0 +1,60 @@
+<div class="jumbotron">
+  <div class="container">
+    <form class="form-horizontal" name="loginform" novalidate>
+
+      <div class="form-group">
+        <label for="date" class="col-sm-2 control-label">Date</label>
+        <div class="col-sm-10">
+          <input ng-model="transaction.date" type="date" name="date" class="form-control" placeholder="Date" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="type" class="col-sm-2 control-label">Transaction Type</label>
+        <div class="col-sm-10">
+          <select ng-model="transaction.type" class="form-control">
+            <option>Purchase</option>
+            <option>Transfer</option>
+            <option>Refund</option>
+            <option>Other: incoming</option>
+            <option>Other: outgoing</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="receiver" class="col-sm-2 control-label">Receiver</label>
+        <div class="col-sm-10">
+          <input ng-model="transaction.receiver" type="text" name="receiver" class="form-control" placeholder="Receiver" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="currency" class="col-sm-2 control-label">Currency</label>
+        <div class="col-sm-10">
+          <select ng-model="transaction.currency" class="form-control">
+            <option>USD</option>
+            <option>EUR</option>
+            <option>CAD</option>
+            <option>MXN</option>
+            <option>CNY</option>
+            <option>INR</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="amount" class="col-sm-2 control-label">Amount</label>
+        <div class="col-sm-10">
+          <input ng-model="transaction.amount" type="number" name="amount" class="form-control" placeholder="Amount" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" ng-click="sendTransaction()" class="btn btn-default">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

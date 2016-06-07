@@ -4,5 +4,5 @@ angular.module('currencyConverterApp')
     templateUrl: '/modules/signup/signup.html',
     restrict: 'E',
     controller: 'signupCtrl'
-  }
+  };
 });

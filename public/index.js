@@ -12,6 +12,14 @@ angular.module('currencyConverterApp', ['ui.router', 'ngCookies', 'reCAPTCHA'])
       .state('signup', {
         url: "/signup",
         template: "<signup></signup>"
+    })
+      .state('displayTransactions', {
+        url: "/displayTransactions",
+        template: "<display-transactions></display-transactions>"
+    })
+      .state('addTransaction', {
+        url: "/addTransaction",
+        template: "<add-transaction></add-transaction>"
     });
 
     // CSRF Configuration

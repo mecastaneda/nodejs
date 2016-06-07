@@ -1,0 +1,18 @@
+<div class="jumbotron">
+  <div class="container">
+    <table id="table-viewer" class="table table-bordered">
+      <th>
+        <td>Date</td><td>Type</td>
+        <td>Receiver</td><td>Currency</td>
+        <td>Amount</td>
+      </th>
+      <tr ng-repeat="transaction in transactions">
+        <td ng-bind="transaction.date"></td>
+        <td ng-bind="transaction.type"></td>
+        <td ng-bind="transaction.receiver"></td>
+        <td ng-bind="transaction.currency"></td>
+        <td ng-bind="transaction.amount"></td>
+      </tr>
+    </table>
+  </div>
+</div>
