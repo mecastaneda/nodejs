@@ -1,37 +1,48 @@
-angular.module('currencyConverterApp', ['ui.router', 'ngCookies', 'reCAPTCHA'])
-.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', 'reCAPTCHAProvider',
-  function($stateProvider, $urlRouterProvider, $httpProvider, reCAPTCHAProvider) {
+angular.module('currencyConverterApp', ['ui.router', 'ngCookies', 'vcRecaptcha'])
+.config(['$stateProvider', '$urlRouterProvider', '$httpProvider',
+  function($stateProvider, $urlRouterProvider, $httpProvider) {
 
     // Routing Configuration
     $urlRouterProvider.otherwise("/login");
     $stateProvider
       .state('login', {
         url: "/login",
-        template: "<login></login>"
+        templateUrl: "/modules/login/login.html",
     })
       .state('signup', {
         url: "/signup",
-        template: "<signup></signup>"
+        templateUrl: "/modules/signup/signup.html"
     })
       .state('displayTransactions', {
         url: "/displayTransactions",
-        template: "<display-transactions></display-transactions>"
+        templateUrl: "/modules/transactions/transactions-viewer.html"
     })
       .state('addTransaction', {
         url: "/addTransaction",
-        template: "<add-transaction></add-transaction>"
+        templateUrl: "/modules/transactions/transaction-form.html"
+    })
+      .state('convertions', {
+        url: "/convertions",
+        templateUrl: '/modules/convertions/convertions.html'
     });
 
     // CSRF Configuration
     $httpProvider.defaults.xsrfHeaderName = 'X-XSRF-TOKEN';
     $httpProvider.defaults.xsrfCookieName = 'XSRF-TOKEN';
 
-    // reCaptcha Configuration
-    reCAPTCHAProvider.setPublicKey('6LdzvyETAAAAAAulB2x8v6GJfhMSbW43XtlHcV1u');
-    reCAPTCHAProvider.setOptions({
-        theme: 'light'
-    });
 }])
-.controller('mainCtrl', ['$scope', function($scope) {
-
-}]);
+.run(['$rootScope', '$urlRouter', '$state', '$location', '$cookies',
+  function($rootScope, $urlRouter, $state, $location, $cookies) {
+    if($cookies.get('userId'))
+      $rootScope.isAuthed = true;
+    $rootScope.$on('$locationChangeSuccess', function(evt) {
+      evt.preventDefault();
+      var requirements = $rootScope.isAuthed || $location.path() == '/signup';
+      if(requirements) {
+        $urlRouter.sync();
+      } else {
+        $state.go('login');
+      }
+    });
+  }
+])

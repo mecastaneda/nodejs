@@ -14,10 +14,8 @@ module.exports = function(router) {
       }
       req.logIn(user, function(err) {
         if (err) return next(err);
-        console.log('user', user);
-        console.log('info', info);
-        res.json({"success": info});
-        // TODO: Do not send info
+        console.log('user logged in, sending cookie', user._id);
+        res.cookie('userId', user._id).send('success');
       });
     })(req, res, next);
   });

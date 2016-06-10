@@ -16,6 +16,7 @@
     "tests"
   ],
   "dependencies": {
-    "angular-re-captcha": "^0.2.0"
+    "angular-re-captcha": "^0.2.0",
+    "angular-recaptcha": "^3.0.3"
   }
 }

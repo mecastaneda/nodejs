@@ -1,0 +1,35 @@
+<div class="jumbotron" ng-controller="convertionsCtrl">
+  <div class="container convert">
+    <form class="form-inline form1">
+
+      <div class="form-group">
+        <label  for="exampleInputAmount">Amount</label>
+        <div class="input-group">
+          <div class="input-group-addon">$</div>
+          <input type="number" class="form-control" ng-model="amount" placeholder="Amount">
+        </div>
+      </div>
+
+      <select class="form-control" ng-model="converter1" ng-options="currency.code for currency in currencies">
+        <option value="" selected>-- Currency to Convert From --</option>
+      </select>
+    </form>
+
+    <form class="form-inline form2">
+
+      <div class="form-group">
+        <select class="form-control" ng-model="converter2" ng-options="currency.code for currency in currencies">
+          <option value="" selected>-- Select a Currency to Convert To --</option>
+        </select>
+
+        <button type="button" ng-click="doConvertion()" class="btn btn-primary">Convert</button>
+
+        <div class="input-group">
+          <div class="input-group-addon">$</div>
+          <input type="text" class="form-control" ng-model="result" placeholder="Result" readonly>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>

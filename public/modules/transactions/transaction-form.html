@@ -1,4 +1,4 @@
-<div class="jumbotron">
+<div class="jumbotron" ng-controller="transactionsCtrl">
   <div class="container">
     <form class="form-horizontal" name="loginform" novalidate>
 
@@ -12,12 +12,12 @@
       <div class="form-group">
         <label for="type" class="col-sm-2 control-label">Transaction Type</label>
         <div class="col-sm-10">
-          <select ng-model="transaction.type" class="form-control">
-            <option>Purchase</option>
-            <option>Transfer</option>
-            <option>Refund</option>
-            <option>Other: incoming</option>
-            <option>Other: outgoing</option>
+          <select name="type" ng-model="transaction.type" class="form-control">
+            <option value="Purchase">Purchase</option>
+            <option value="Transfer">Transfer</option>
+            <option value="Refund">Refund</option>
+            <option value="Other: incoming">Other: incoming</option>
+            <option value="Other: outgoing">Other: outgoing</option>
           </select>
         </div>
       </div>
@@ -32,13 +32,8 @@
       <div class="form-group">
         <label for="currency" class="col-sm-2 control-label">Currency</label>
         <div class="col-sm-10">
-          <select ng-model="transaction.currency" class="form-control">
-            <option>USD</option>
-            <option>EUR</option>
-            <option>CAD</option>
-            <option>MXN</option>
-            <option>CNY</option>
-            <option>INR</option>
+          <select ng-model="transaction.currency"
+          ng-options="currency.full for currency in currencies" class="form-control">
           </select>
         </div>
       </div>

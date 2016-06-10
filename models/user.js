@@ -7,12 +7,20 @@ var mongoose = require('mongoose'),
     crypto = require('../lib/crypto'),
     Schema = mongoose.Schema;
 
+var transactionSchema = new Schema({
+  date: { type: Date, default: Date.now },
+  type: String,
+  receiver: String,
+  currency: String,
+  amount: Number
+});
+
 var userModel = function () {
 
-  var userSchema = Schema({
+  var userSchema = new Schema({
     email: { type: String, unique: true },  //Ensure logins are unique.
     password: String, //We'll store bCrypt hashed passwords.  Just say no to plaintext!
-    transactions: [{type: Schema.Types.ObjectId, ref: 'Transaction'}]
+    transactions: [transactionSchema]
   });
 
   /**

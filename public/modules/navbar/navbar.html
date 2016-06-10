@@ -15,10 +15,12 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
       <ul class="nav navbar-nav navbar-right">
-        <li ng-hide="path == '/signup'"><a href="#/signup">Sign Up</a></li>
-        <li ng-hide="path == '/login'"><a href="#/login">Login</a></li>
-        <li><a href="#/addTransaction">Add Transaction</a></li>
-        <li><a href="#/displayTransactions">Display Transaction</a></li>
+        <li ng-hide="path == '/signup' || isAuthed"><a href="#/signup">Sign Up</a></li>
+        <li ng-hide="path == '/login' || isAuthed"><a href="#/login">Login</a></li>
+        <li><a ng-show="isAuthed" href="#/addTransaction">Add Transaction</a></li>
+        <li><a ng-show="isAuthed" href="#/displayTransactions">Display Transaction</a></li>
+        <li><a ng-show="isAuthed" href="#/convertions">Convertion Calculator</a></li>
+        <li><a ng-show="isAuthed" href="#" ng-click="logout()">Logout</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

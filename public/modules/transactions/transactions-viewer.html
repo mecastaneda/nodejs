@@ -1,18 +1,19 @@
-<div class="jumbotron">
-  <div class="container">
-    <table id="table-viewer" class="table table-bordered">
-      <th>
-        <td>Date</td><td>Type</td>
-        <td>Receiver</td><td>Currency</td>
-        <td>Amount</td>
+<div class="container" ng-controller="transactionsCtrl">
+  <table id="table-viewer" class="table table-bordered">
+    <tr>
+      <th>Date</th>
+      <th>Transaction</th>
+      <th>Amount</th>
+      <th class="th-converter">Convert to:
+        <select ng-model="converter" ng-options="currency.code for currency in currencies" class="form-control" id="converter">
+        </select>
       </th>
-      <tr ng-repeat="transaction in transactions">
-        <td ng-bind="transaction.date"></td>
-        <td ng-bind="transaction.type"></td>
-        <td ng-bind="transaction.receiver"></td>
-        <td ng-bind="transaction.currency"></td>
-        <td ng-bind="transaction.amount"></td>
-      </tr>
-    </table>
-  </div>
+    </tr>
+    <tr ng-repeat="transaction in transactions">
+      <td>{{transaction.date | date:"MM/dd/yyyy"}}</td>
+      <td>{{transaction.type}}: {{transaction.receiver}}</td>
+      <td>{{transaction.amount | number: 2| symbolizer:transaction.currency }}</td>
+      <td>{{transaction.exchange | number: 2 }}</td>
+    </tr>
+  </table>
 </div>
